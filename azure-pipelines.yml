@@ -21,8 +21,6 @@ stages:
     jobs:
       - job: Build
         displayName: Build
-        pool:
-          name: mypool
         steps:
           - task: Docker@2
             inputs:
