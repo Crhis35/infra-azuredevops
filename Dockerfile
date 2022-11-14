@@ -1,12 +1,11 @@
 # Name the node stage "builder"
-FROM node:15-alpine AS builder
+FROM node:18-slim AS builder
 
 # Set working directory
 WORKDIR /app
 
 # Copy our node module specification
 COPY package.json package.json
-COPY yarn.lock yarn.lock
 
 # install node modules and build assets
 RUN yarn install --production
