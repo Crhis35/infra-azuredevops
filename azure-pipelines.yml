@@ -14,6 +14,9 @@ pool:
 
 variables:
   tag: "$(Build.BuildId)"
+  cg_name: "cg-infraapp"
+  rg_name: "rg-infraapp"
+  rg_location: "eastus"
 
 stages:
   - stage: Build
@@ -52,6 +55,6 @@ stages:
               ARM_TENANT_ID: $(ARM_TENANT_ID)
               ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
               TF_VAR_imagebuild: $(tag)
-              TF_VAR_cg_name: cg-infraapp
-              TF_VAR_rg-name: rg-infraapp
-              TF_VAR_location: eastus
+              TF_VAR_cg_name: $(cg_name)
+              TF_VAR_rg-name: $(rg_name)
+              TF_VAR_location: $(rg_location)
