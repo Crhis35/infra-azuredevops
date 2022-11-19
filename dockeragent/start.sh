@@ -5,6 +5,14 @@ if [ -z "$AZP_URL" ]; then
   echo 1>&2 "error: missing AZP_URL environment variable"
   exit 1
 fi
+if [ -z "$AZP_EMAIL" ]; then
+  echo 1>&2 "error: missing AZP_EMAIL environment variable"
+  exit 1
+fi
+if [ -z "$AZP_PASS" ]; then
+  echo 1>&2 "error: missing AZP_PASS environment variable"
+  exit 1
+fi
 
 if [ -z "$AZP_TOKEN_FILE" ]; then
   if [ -z "$AZP_TOKEN" ]; then
@@ -15,6 +23,7 @@ if [ -z "$AZP_TOKEN_FILE" ]; then
   AZP_TOKEN_FILE=/azp/.token
   echo -n $AZP_TOKEN > "$AZP_TOKEN_FILE"
 fi
+
 
 unset AZP_TOKEN
 
@@ -47,6 +56,10 @@ print_header() {
 
 # Let the agent ignore the token env variables
 export VSO_AGENT_IGNORE=AZP_TOKEN,AZP_TOKEN_FILE
+
+print_header "0. Login into Azure"
+az login -u $AZP_EMAIL -p $AZP_PASS
+
 
 print_header "1. Determining matching Azure Pipelines agent..."
 
