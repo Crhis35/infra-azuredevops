@@ -22,7 +22,7 @@ stages:
   - stage: Build
     displayName: Build image
     pool:
-      name: default
+      name: Default
     jobs:
       - job: Build
         displayName: Build
