@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json package.json
 
 # install node modules and build assets
-RUN yarn install --production
+RUN yarn install
 
 # Copy all files from current directory to working dir in image
 # Except the one defined in '.dockerignore'
