@@ -22,7 +22,7 @@ stages:
   - stage: Build
     displayName: Build image
     pool:
-      name: docker-agent-01
+      name: mypool
     jobs:
       - job: Build
         displayName: Build
