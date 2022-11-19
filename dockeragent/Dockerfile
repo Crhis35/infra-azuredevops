@@ -27,8 +27,16 @@ RUN \
     # vim
     apt-get install vim -y
 
-RUN apt install -y curl
-RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar xvz -C /tmp/ && mv /tmp/docker/docker /usr/bin/docker
+
+
+################################
+# Install Docker
+################################
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
 
 ################################
 # Install Terraform
